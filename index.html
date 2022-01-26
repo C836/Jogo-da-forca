@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da Forca (BETA)</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="imagens/iconMorte.png">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="palavras.js" defer></script>
+    <script src="forca.js" defer></script>
+</head>
+<body>
+    <img src="imagens/background.jpg" draggable="false" id="background">
+    <img src="imagens/sol.gif" id="sol">
+    <img src="imagens/chao.gif" id="chao">
+    <div id="menu">
+        <p class="title">Jogo da Forca</p>
+        <p class="title" id="select">Selecione o número de letras!</p>
+        <div id=levels>
+            <p id=facil>Fácil</p>
+            <p id=medio>Médio</p>
+            <p id=dificil>Difícil</p>
+            <p id=insano>Insano</p>
+        </div>
+    
+    <div id="botoesLevel">
+        <button class="botoesLevel facil" onclick="start(lev4)">4</button>
+        <button class="botoesLevel facil" onclick="start(lev5)">5</button>
+        <button class="botoesLevel facil" onclick="start(lev6)">6</button>
+        <button class="botoesLevel medio" onclick="start(lev7)">7</button>
+        <button class="botoesLevel medio" onclick="start(lev8)">8</button>
+        <button class="botoesLevel medio" onclick="start(lev9)">9</button>
+        <button class="botoesLevel dificil" onclick="start(lev10)">10</button>
+        <button class="botoesLevel dificil" onclick="start(lev11)">11</button>
+        <button class="botoesLevel dificil" onclick="start(lev12)">12</button>
+        <button class="botoesLevel insano" onclick="start(lev13)">13</button>
+        <button class="botoesLevel insano" onclick="start(lev14)">14</button>
+        <button class="botoesLevel insano" onclick="start(lev15)">15</button>
+    </div></div>
+    <main>
+        <img src="imagens/background1.png" draggable="false" id="background" style="transform: rotate(1deg); opacity: 1;box-shadow: 20px 20px 15px rgba(0, 0, 0, 0.5)">  
+        <div id=gameBox>
+            <p id="gameover">Game Over!</p>
+            <p id="back" onclick=sair()>Retornar ao menu</p></div>
+        <div class="itens" id="level"><p id=nivel>a</p></div>
+        <div class="itens" id="display"><img src="imagens/0.gif" id="displayImg"></div>
+        <div class="itens" id="selecao">
+            <button class="botoes" id="ok" tabindex="-1" onclick="verificar()"><img src="imagens/ok.png" class="sign" ></button>
+            <div class=botoes id="letra"></div>
+            <button class="botoes" id="not" tabindex="-1" onclick="apagar()"> <img src="imagens/no.png" class="sign"></button></div>
+        <div class="itens" id="letras" style="transform: rotate(1deg);"><div id="blocos"></div></div>
+    </main>
+</body>
+</html>
