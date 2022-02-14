@@ -147,6 +147,10 @@ function verificar() {
     if ((palavra.indexOf(selec) < 0) && (erro < 10)) {
         wrong.push(selec);
 
+        if (erro === 6){
+            dica();
+        }
+
         var y = 0
         for (let x = 0; x < (wrong.length / 2); x++) {
             if (wrong[y + 1] != undefined) {
@@ -161,10 +165,6 @@ function verificar() {
 
         erro += 1; letra.innerText = "";
         document.getElementById("displayImg").src = `imagens/${erro}.gif`
-    }
-
-    if ((erro === 6)||(erro === 9)) {
-        dica();
     }
 
     if (erro === 10) {
@@ -218,7 +218,6 @@ function checkfin(){
         check()
     }
 }
-
 
 function dica() {
     var botoesDisplay=document.querySelectorAll(".botoesDisplay")
