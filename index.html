@@ -47,22 +47,31 @@
         </div>
     </div>
     <main>
-        <img src="imagens/background1.png" draggable="false" id="background"
-            style="transform: rotate(1deg); opacity: 1;box-shadow: 20px 20px 15px rgba(0, 0, 0, 0.5)">
+        <img src="imagens/background1.png" draggable="false" id="background">
+            <div id="erros">
+            <p class="sobra"></p>
+            <p class="sobra"></p>
+            <p class="sobra"></p>
+            <p class="sobra"></p>
+            <p class="sobra"></p>
+            <p class="sobra"></p> 
+            </div>
         <div class=gameBox id=lose>
             <p class="gameover">Fim de jogo!</p>
         </div>
-        <p id="contador">a</p>
+        <p id="contador">Erro</p>
         <div id=morte><img src="imagens/iconMorte.png" width="40px" id=iconMorte><span id="mortec"></span></div>
         <div class="itens" id="level">
-            <p id=nivel>a</p>
+            <p id=nivel>Erro</p>
         </div>
         <div class="itens" id="display"><img src="imagens/0.gif" id="displayImg"></div>
         <img src="imagens/seta.png" onclick=sair() id="seta">
         <div class="itens" id="selecao">
-            <button class="botoes" id="ok" tabindex="-1" onclick="verificar()"><img src="imagens/ok.png" class="sign"></button>
+            <button class="botoes" id="ok" tabindex="-1" onclick="verificar()"><img src="imagens/ok.png"
+                    class="sign"></button>
             <div class=botoes id="letra"></div>
-            <button class="botoes" id="not" tabindex="-1" onclick="apagar()"> <img src="imagens/no.png" class="sign"></button>
+            <button class="botoes" id="not" tabindex="-1" onclick="apagar()"> <img src="imagens/no.png"
+                    class="sign"></button>
             <p class="back" id=back>Tempo: 00:00</p>
         </div>
         <div class="itens" id="letras" style="transform: rotate(1deg);">

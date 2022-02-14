@@ -1,4 +1,4 @@
-const dicas={
+var dicas={
     'bolo':'alimento',
     'cafe':'alimento',
     'caio':'nome',
@@ -90,7 +90,6 @@ const dicas={
     'guilherme':'nome',
     'margarida':'natureza',
     'marcilane':'nome',
-    'jiu-jitsu':'esporte',
     'samambaia':'natureza',
     'crocodilo':'animal',
     'tartaruga':'animal',
@@ -111,7 +110,7 @@ const dicas={
     'presidente':'profissão',
     'frigideira':'objeto',
     'helicoptero':'transporte',
-    'resiliência':'capacidade',
+    'resiliencia':'capacidade',
     'paracetamol':'quimica',
     'formigueiro':'natureza',
     'insegurança':'sentimento',
@@ -119,7 +118,7 @@ const dicas={
     'constelação':'lugar',
     'programação':'tecnologia',
     'estetoscopio':'objeto',
-    'albaroamento':'colisão',
+    'abalroamento':'colisão',
     'documentação':'informação',
     'criptografia':'tecnologia',
     'escitalopram':'quimica',
@@ -141,3 +140,4 @@ const dicas={
     'obrigatoriedade':'dever',
     'fundamentalismo':'doutrina'
 }
+
