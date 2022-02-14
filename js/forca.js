@@ -1,3 +1,7 @@
+if(Object.keys(dicas)[0]==='bolo'){
+    localStorage.clear()
+}
+
 var palavra = ""
 var erro = 0
 var array = [];
