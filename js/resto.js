@@ -14,5 +14,16 @@ function check(){
         else{
             localStorage.setItem('lista', localStorage.getItem('lista')+(later-1+','))
         }
+        apagarNivel()
+    }
+}
+
+function apagarNivel(){
+    if(localStorage.getItem("completos")===null){
+        localStorage.setItem("completos",later-1)
+    } else{
+        let guardar=localStorage.getItem("completos").split(',')
+        guardar.push(later-1);
+        localStorage.setItem("completos",later-1);
     }
 }

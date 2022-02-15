@@ -5,6 +5,8 @@ var array = [];
 var letras = /^([a-z]+)$/;
 var wrong = []
 
+restore()
+
 if (localStorage.getItem('lista') != null) {
     loop = localStorage.getItem('lista').split('')
     loop.pop()
@@ -14,6 +16,21 @@ if (localStorage.getItem('lista') != null) {
     for (let x of loop) {
         document.querySelectorAll('button.botoesLevel')[x].removeAttribute("onclick");
         document.querySelectorAll('button.botoesLevel')[x].style.cssText = "opacity:0.5"
+    }
+}
+
+function restore(){
+    let local = document.querySelectorAll('button.botoesLevel')
+    if(localStorage.getItem("completos")===null){
+        for (let x = 0; x < local.length; x++) {
+            local[x].setAttribute("onclick", `start(${x + 1})`)
+        }
+    } else{
+    let nCompletos = localStorage.getItem("completos");
+    for (let x = 0; x < local.length; x++) {
+        if(nCompletos.indexOf(`${x}`)===-1){
+        local[x].setAttribute("onclick", `start(${x + 1})`)}
+        }
     }
 }
 
@@ -119,14 +136,12 @@ function sair() {
         array = []
     }
     $("main").css({ "top": "50%", "left": "170%", "transform": "translate(-50%, -50%) rotate(-40deg)" })
-    palavra = ""
+    palavra = "";
 
     setTimeout(
         function () {
             $("main").css({ "transition-duration": "0s", "top": "50%", "left": "-100%", "transform": "translate(-50%, -50%) rotate(-40deg)" });
-            for (let x = 0; x < botoesLevel.length; x++) {
-                botoesLevel[x].setAttribute("onclick", `start(${x + 1})`)
-            } 
+            restore()
         }, 600);
 
     $('#contador').countdown('destroy')
