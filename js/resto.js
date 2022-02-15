@@ -5,6 +5,7 @@ function check(){
         if(a.length===later+3){palavras.push(a)}}
     
     if (palavras.length===0){
+        exit = true;
         document.querySelectorAll('button.botoesLevel')[later-1].removeAttribute("onclick");
         document.querySelectorAll('button.botoesLevel')[later-1].style.cssText="opacity:0.5"
 

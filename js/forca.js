@@ -1,4 +1,5 @@
 var palavra = ""
+var exit = false
 var erro = 0
 var array = [];
 var letras = /^([a-z]+)$/;
@@ -102,9 +103,11 @@ function start(lev) {
 }
 
 function sair() {
+    if (exit){
+        document.location.reload(true);
+    }
 
     wrong = []
-
     document.querySelectorAll(".sobra").forEach(function(sobra){
         sobra.textContent=" "
     })
@@ -123,8 +126,6 @@ function sair() {
             $("main").css({ "transition-duration": "0s", "top": "50%", "left": "-100%", "transform": "translate(-50%, -50%) rotate(-40deg)" });
             for (let x = 0; x < botoesLevel.length; x++) {
                 botoesLevel[x].setAttribute("onclick", `start(${x + 1})`)
-            } if (palavras.length===0){
-                document.location.reload();
             } 
         }, 600);
 
