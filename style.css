@@ -96,14 +96,13 @@ img {
 }
 
 .sobra {
-    font: 6.6vh 'Amatic SC', cursive;
+    font: 44px 'Amatic SC', cursive;
 }
 
 #erros{
     display:flex; 
     flex-direction:column;
     width:75px; 
-    height: 50vh; 
     position: absolute; 
     right: 0; 
     top: 50%; 
