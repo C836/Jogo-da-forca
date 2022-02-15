@@ -270,6 +270,7 @@ button.botoesDisplay {
     left: 25px;
     top: 50%;
     transform: translateY(-50%);
+    cursor:pointer;
 }
 
 #contador {
