@@ -24,6 +24,6 @@ function apagarNivel(){
     } else{
         let guardar=localStorage.getItem("completos").split(',')
         guardar.push(later-1);
-        localStorage.setItem("completos",later-1);
+        localStorage.setItem("completos",guardar);
     }
 }
