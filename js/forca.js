@@ -1,12 +1,11 @@
-if(Object.keys(dicas)[0]==='bolo'){
-    localStorage.clear()
-}
-
 var palavra = ""
+var exit = false
 var erro = 0
 var array = [];
 var letras = /^([a-z]+)$/;
 var wrong = []
+
+restore()
 
 if (localStorage.getItem('lista') != null) {
     loop = localStorage.getItem('lista').split('')
@@ -17,6 +16,21 @@ if (localStorage.getItem('lista') != null) {
     for (let x of loop) {
         document.querySelectorAll('button.botoesLevel')[x].removeAttribute("onclick");
         document.querySelectorAll('button.botoesLevel')[x].style.cssText = "opacity:0.5"
+    }
+}
+
+function restore(){
+    let local = document.querySelectorAll('button.botoesLevel')
+    if(localStorage.getItem("completos")===null){
+        for (let x = 0; x < local.length; x++) {
+            local[x].setAttribute("onclick", `start(${x + 1})`)
+        }
+    } else{
+    let nCompletos = localStorage.getItem("completos");
+    for (let x = 0; x < local.length; x++) {
+        if(nCompletos.indexOf(`${x}`)===-1){
+        local[x].setAttribute("onclick", `start(${x + 1})`)}
+        }
     }
 }
 
@@ -55,7 +69,7 @@ function start(lev) {
 
     var palavras = []
 
-    if (localStorage.getItem(`palavras${later}`) === null) {
+    if (localStorage.getItem(`palavras`) === null) {
         for (var a in dicas) {
             if (a.length === later + 3) { palavras.push(a) }
         }
@@ -63,7 +77,7 @@ function start(lev) {
         palavra = palavras[actual]
     }
     else {
-        for (var a in JSON.parse(localStorage.getItem(`palavras${later}`))) {
+        for (var a in JSON.parse(localStorage.getItem(`palavras`))) {
             if (a.length === later + 3) { palavras.push(a) }
         }
         actual = Math.floor(Math.random() * (0 - palavras.length)) + palavras.length;
@@ -106,28 +120,28 @@ function start(lev) {
 }
 
 function sair() {
-    wrong = []
+    if (exit){
+        document.location.reload(true);
+    }
 
+    wrong = []
     document.querySelectorAll(".sobra").forEach(function(sobra){
         sobra.textContent=" "
     })
 
     var botoesLevel = document.querySelectorAll('button.botoesLevel');
 
-    for (let x = 0; x < botoesLevel.length; x++) {
-        botoesLevel[x].setAttribute("onclick", `start(${x + 1})`)
-    }
-
     for (var m = 0; m < palavra.length; m++) {
         document.querySelectorAll(".botoesDisplay")[0].remove()
         array = []
     }
     $("main").css({ "top": "50%", "left": "170%", "transform": "translate(-50%, -50%) rotate(-40deg)" })
-    palavra = ""
+    palavra = "";
 
     setTimeout(
         function () {
-            $("main").css({ "transition-duration": "0s", "top": "50%", "left": "-100%", "transform": "translate(-50%, -50%) rotate(-40deg)" })
+            $("main").css({ "transition-duration": "0s", "top": "50%", "left": "-100%", "transform": "translate(-50%, -50%) rotate(-40deg)" });
+            restore()
         }, 600);
 
     $('#contador').countdown('destroy')
@@ -194,18 +208,19 @@ function checkfin(){
     var result = ""
     for (var n = 0; n < palavra.length; n++) {
         result += document.querySelectorAll(".botoesDisplay")[n].innerText;
+
     } if (result === palavra) {
         document.getElementById("displayImg").src = `imagens/11.gif`;
         $("#nivel").text("Você venceu!");
 
-        if (localStorage.getItem(`palavras${later}`) === null) {
+        if (localStorage.getItem(`palavras`) === null) {
             delete dicas[palavra];
-            localStorage.setItem(`palavras${later}`, JSON.stringify(dicas));
+            localStorage.setItem(`palavras`, JSON.stringify(dicas));
         }
         else {
-            tempObj = JSON.parse(localStorage.getItem(`palavras${later}`))
+            tempObj = JSON.parse(localStorage.getItem(`palavras`))
             delete tempObj[palavra];
-            localStorage.setItem(`palavras${later}`, JSON.stringify(tempObj));
+            localStorage.setItem(`palavras`, JSON.stringify(tempObj));
         }
 
         for (let i = 0; i < 3; i++) {
@@ -245,4 +260,10 @@ function dica() {
 function apagar() {
     letra.innerText = ""
     selec = ""
+}
+
+function reset() {
+    localStorage.clear();
+    alert("Progresso resetado");
+    document.location.reload();
 }
